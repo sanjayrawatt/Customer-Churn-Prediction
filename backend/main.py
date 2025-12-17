@@ -6,7 +6,7 @@ Entry point for the application
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from backend.core.config import (
+from core.config import (
     APP_TITLE,
     APP_DESCRIPTION,
     APP_VERSION,
@@ -15,8 +15,8 @@ from backend.core.config import (
     ALLOW_METHODS,
     ALLOW_HEADERS,
 )
-from backend.core.model_loader import model_manager
-from backend.api.routes import router
+from core.model_loader import model_manager
+from api.routes import router
 
 # Initialize FastAPI app
 app = FastAPI(
@@ -55,4 +55,4 @@ async def shutdown_event():
 if __name__ == "__main__":
     import uvicorn
 
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    uvicorn.run("backend.main:app", host="0.0.0.0", port=8000)
