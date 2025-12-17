@@ -3,17 +3,17 @@ API route handlers
 """
 
 from fastapi import APIRouter, HTTPException
-from backend.models.request import CustomerData, BatchPredictionRequest
-from backend.models.response import (
+from models.request import CustomerData, BatchPredictionRequest
+from models.response import (
     PredictionResponse,
     BatchPredictionResponse,
     ModelInfo,
     HealthResponse,
     RootResponse,
 )
-from backend.services.prediction import prediction_service
-from backend.core.model_loader import model_manager
-from backend.core.config import APP_TITLE, APP_VERSION
+from services.prediction import prediction_service
+from core.model_loader import model_manager
+from core.config import APP_TITLE, APP_VERSION
 
 # Create router
 router = APIRouter()

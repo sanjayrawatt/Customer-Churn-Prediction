@@ -3,8 +3,8 @@ Data preprocessing and feature engineering
 """
 
 import pandas as pd
-from backend.models.request import CustomerData
-from backend.core.model_loader import model_manager
+from models.request import CustomerData
+from core.model_loader import model_manager
 
 
 class DataPreprocessor:

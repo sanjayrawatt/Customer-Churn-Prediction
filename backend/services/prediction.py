@@ -3,11 +3,11 @@ Prediction service for churn prediction
 """
 
 from typing import List
-from backend.models.request import CustomerData
-from backend.models.response import PredictionResponse, BatchPredictionResponse
-from backend.services.preprocessing import DataPreprocessor
-from backend.core.model_loader import model_manager
-from backend.core.config import RISK_THRESHOLD_LOW, RISK_THRESHOLD_MEDIUM
+from models.request import CustomerData
+from models.response import PredictionResponse, BatchPredictionResponse
+from services.preprocessing import DataPreprocessor
+from core.model_loader import model_manager
+from core.config import RISK_THRESHOLD_LOW, RISK_THRESHOLD_MEDIUM
 
 
 class PredictionService:

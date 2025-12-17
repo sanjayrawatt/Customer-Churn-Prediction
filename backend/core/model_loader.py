@@ -6,7 +6,7 @@ import pickle
 from pathlib import Path
 from typing import Any, Dict, Optional
 
-from backend.core.config import MODELS_DIR
+from core.config import MODELS_DIR
 
 
 class ModelManager:

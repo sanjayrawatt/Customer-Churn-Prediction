@@ -3,8 +3,14 @@ FastAPI application for Customer Churn Prediction
 Entry point for the application
 """
 
+import sys
+from pathlib import Path
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+
+# Add backend to path for proper imports
+sys.path.insert(0, str(Path(__file__).parent))
 
 from core.config import (
     APP_TITLE,

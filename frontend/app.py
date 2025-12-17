@@ -114,7 +114,7 @@ def get_model_info():
 def predict_single(customer_data):
     """Make single prediction"""
     try:
-        response = requests.post(f"{API_URL}/predict", json=customer_data, timeout=10)
+        response = requests.post(f"{API_URL}/predict", json=customer_data, timeout=30)
         if response.status_code == 200:
             return response.json(), None
         else:
@@ -127,7 +127,7 @@ def predict_batch(customers_data):
     """Make batch prediction"""
     try:
         response = requests.post(
-            f"{API_URL}/predict/batch", json={"customers": customers_data}, timeout=30
+            f"{API_URL}/predict/batch", json={"customers": customers_data}, timeout=120
         )
         if response.status_code == 200:
             return response.json(), None

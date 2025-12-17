@@ -3,7 +3,7 @@ Request models for API endpoints
 """
 
 from typing import List
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 
 
 class CustomerData(BaseModel):
@@ -62,6 +62,28 @@ class CustomerData(BaseModel):
     MonthlyCharges: float = Field(..., description="Monthly charges amount", ge=0)
     TotalCharges: float = Field(..., description="Total charges amount", ge=0)
 
+    @field_validator('gender', 'Partner', 'Dependents', 'PhoneService', 'MultipleLines', 'InternetService', 'OnlineSecurity', 'OnlineBackup', 'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies', 'Contract', 'PaperlessBilling', 'PaymentMethod', mode='before')
+    @classmethod
+    def strip_strings(cls, v):
+        """Strip whitespace from string fields"""
+        if isinstance(v, str):
+            return v.strip()
+        return v
+
+    @field_validator('MonthlyCharges', 'TotalCharges', mode='before')
+    @classmethod
+    def parse_charges(cls, v):
+        """Convert empty/whitespace strings to 0.0"""
+        if isinstance(v, str):
+            v = v.strip()
+            if v == '':
+                return 0.0
+            try:
+                return float(v)
+            except ValueError:
+                raise ValueError(f"Invalid float value: {v}")
+        return v
+
     class Config:
         json_schema_extra = {
             "example": {
@@ -92,4 +114,3 @@ class BatchPredictionRequest(BaseModel):
     """Request model for batch prediction"""
 
     customers: List[CustomerData]
-
