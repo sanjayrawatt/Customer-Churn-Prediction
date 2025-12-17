@@ -7,12 +7,22 @@ A complete end-to-end machine learning project for predicting customer churn in 
 Customer churn prediction is critical for businesses to identify customers at risk of leaving and take proactive retention measures. This project analyzes customer data, trains multiple machine learning models, and deploys the best performing model (XGBoost) via a REST API.
 
 **Key Highlights:**
+
 - 📈 Comprehensive EDA with 15+ visualizations
 - 🤖 Trained and compared 4 ML models
 - 🏆 XGBoost achieved 93.18% ROC-AUC score
 - 🚀 Production-ready FastAPI backend
 - 📦 Clean, modular architecture
 - 🔧 Automated feature engineering pipeline
+
+## 🌐 Live Deployment
+
+| Service                  | URL                                                                     |
+| ------------------------ | ----------------------------------------------------------------------- |
+| **Frontend (Streamlit)** | https://customer-churn-prediction-mu7mqjyfcsxzvqqhxztgij.streamlit.app/ |
+| **Backend API (Render)** | https://customer-churn-prediction-backend.onrender.com                  |
+| **API Documentation**    | https://customer-churn-prediction-backend.onrender.com/docs             |
+| **API ReDoc**            | https://customer-churn-prediction-backend.onrender.com/redoc            |
 
 ## 📁 Project Structure
 
@@ -67,6 +77,7 @@ Project/
 - **Churn Rate**: 26.54%
 
 **Feature Categories:**
+
 - **Demographics**: Gender, Senior Citizen, Partner, Dependents
 - **Services**: Phone, Internet, Security, Backup, Streaming, etc.
 - **Account**: Tenure, Contract, Payment Method, Billing
@@ -85,22 +96,24 @@ Project/
 
 Multiple models were trained and evaluated using Optuna for hyperparameter optimization:
 
-| Model | Accuracy | Precision | Recall | F1-Score | ROC-AUC | Training Time (s) |
-|-------|----------|-----------|--------|----------|---------|-------------------|
-| **XGBoost** 🏆 | **0.8541** | **0.8448** | **0.8676** | **0.8561** | **0.9318** | **15.88** |
-| Gradient Boosting | 0.8556 | 0.8538 | 0.8580 | 0.8559 | 0.9304 | 738.79 |
-| Random Forest | 0.8493 | 0.8289 | 0.8802 | 0.8538 | 0.9291 | 28.98 |
-| Decision Tree | 0.8159 | 0.7873 | 0.8657 | 0.8247 | 0.8785 | 4.86 |
+| Model             | Accuracy   | Precision  | Recall     | F1-Score   | ROC-AUC    | Training Time (s) |
+| ----------------- | ---------- | ---------- | ---------- | ---------- | ---------- | ----------------- |
+| **XGBoost** 🏆    | **0.8541** | **0.8448** | **0.8676** | **0.8561** | **0.9318** | **15.88**         |
+| Gradient Boosting | 0.8556     | 0.8538     | 0.8580     | 0.8559     | 0.9304     | 738.79            |
+| Random Forest     | 0.8493     | 0.8289     | 0.8802     | 0.8538     | 0.9291     | 28.98             |
+| Decision Tree     | 0.8159     | 0.7873     | 0.8657     | 0.8247     | 0.8785     | 4.86              |
 
 ### 🏆 Best Model: XGBoost
 
 **Why XGBoost?**
+
 - Highest F1-Score (0.8561) - Best balance between precision and recall
 - Excellent ROC-AUC (0.9318) - Superior discrimination ability
 - Fast training time (15.88s) - Efficient compared to Gradient Boosting
 - Robust performance across all metrics
 
 **Optimized Hyperparameters:**
+
 - n_estimators: 299
 - learning_rate: 0.204
 - max_depth: 10
@@ -114,6 +127,7 @@ Multiple models were trained and evaluated using Optuna for hyperparameter optim
 The project includes sophisticated feature engineering (30 total features):
 
 **Engineered Features:**
+
 1. **ServiceCount**: Total number of services subscribed
 2. **AvgMonthlyRate**: Average monthly rate (TotalCharges / Tenure)
 3. **PremiumServiceCount**: Count of premium services
@@ -182,6 +196,7 @@ The Streamlit web interface provides:
 - **📈 Model Info**: Performance metrics and visualizations
 
 ### Features:
+
 - ✨ Beautiful gradient-based UI design
 - 📊 Interactive Plotly visualizations
 - 🎯 Probability gauges and risk indicators
@@ -193,13 +208,13 @@ The Streamlit web interface provides:
 
 ### Core Endpoints
 
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | `/` | API information and available endpoints |
-| GET | `/health` | Health check and model status |
-| GET | `/model/info` | Model performance metrics |
-| POST | `/predict` | Single customer churn prediction |
-| POST | `/predict/batch` | Batch predictions for multiple customers |
+| Method | Endpoint         | Description                              |
+| ------ | ---------------- | ---------------------------------------- |
+| GET    | `/`              | API information and available endpoints  |
+| GET    | `/health`        | Health check and model status            |
+| GET    | `/model/info`    | Model performance metrics                |
+| POST   | `/predict`       | Single customer churn prediction         |
+| POST   | `/predict/batch` | Batch predictions for multiple customers |
 
 ### Example Usage
 
@@ -236,6 +251,7 @@ print(response.json())
 ```
 
 **Response:**
+
 ```json
 {
   "churn_prediction": 1,
@@ -277,11 +293,11 @@ curl -X POST http://localhost:8000/predict \
 
 The API automatically categorizes customers into risk levels:
 
-| Risk Level | Churn Probability | Action Recommended |
-|------------|-------------------|-------------------|
-| 🟢 **Low** | < 30% | Standard engagement |
-| 🟡 **Medium** | 30% - 60% | Proactive monitoring |
-| 🔴 **High** | > 60% | Immediate intervention |
+| Risk Level    | Churn Probability | Action Recommended     |
+| ------------- | ----------------- | ---------------------- |
+| 🟢 **Low**    | < 30%             | Standard engagement    |
+| 🟡 **Medium** | 30% - 60%         | Proactive monitoring   |
+| 🔴 **High**   | > 60%             | Immediate intervention |
 
 ## 🏗️ Backend Architecture
 
@@ -305,6 +321,7 @@ See `backend/ARCHITECTURE.md` for detailed architecture documentation.
 ## 📦 Technologies Used
 
 ### Machine Learning
+
 - **scikit-learn**: Model training, preprocessing, evaluation
 - **XGBoost**: Gradient boosting model
 - **LightGBM**: Gradient boosting model
@@ -312,16 +329,19 @@ See `backend/ARCHITECTURE.md` for detailed architecture documentation.
 - **imbalanced-learn**: SMOTE for class balancing
 
 ### Data Analysis
+
 - **pandas**: Data manipulation
 - **numpy**: Numerical computations
 - **matplotlib & seaborn**: Data visualization
 
 ### Backend Development
+
 - **FastAPI**: Modern, fast web framework
 - **Pydantic**: Data validation
 - **uvicorn**: ASGI server
 
 ### Frontend Development
+
 - **Streamlit**: Web application framework
 - **Plotly**: Interactive visualizations
 - **requests**: API communication
@@ -366,5 +386,3 @@ Test the API endpoints using the interactive Swagger UI at `http://localhost:800
 ## 📄 License
 
 MIT License
-
-
