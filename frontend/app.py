@@ -87,7 +87,7 @@ st.markdown(
 )
 
 # API Configuration
-API_URL = "http://localhost:8000"
+API_URL = "https://customer-churn-prediction-backend.onrender.com"
 
 
 # Helper Functions
